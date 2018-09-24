@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Generando varios paquetes</title>
+  <link rel="stylesheet" href="styles.css">
+
+<style>
+body {
+    font-family: sans-serif;
+    font-size: 2em;
+}
+
+html, body {
+    height: 90%;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 0px 0px 10px;
+}
+
+header {
+    text-align: center;
+}
+
+
+h1 {
+    font-size: 2em;
+    margin: 5px 0px 50px 0px;
+}
+
+
+img {
+    max-height: 600px;
+    max-width: 1200px;
+    vertical-align: middle;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+}
+
+#next, #prev {
+    visibility: hidden;
+    display: none;
+}
+
+ul {
+    list-style-type:square;
+}
+
+li {
+    margin-top: .75em;
+    margin-bottom: .75em;
+}
+
+footer {
+    text-align: center;
+    width: 95%;
+    position: fixed;
+    bottom: 0px;
+    font-size: .7em;
+    margin: 0px 0px 0px 0px;
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+	<section style="height: 80%">
+	
+		<article>
+            <h1>Generando varios paquetes</h1>
+<div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">l3</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s1">&#39;8.8.4.4/30&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ans</span><span class="p">,</span><span class="n">unans</span> <span class="o">=</span> <span class="n">sr</span><span class="p">(</span><span class="n">l3</span><span class="o">/</span><span class="n">l4</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">Begin</span> <span class="n">emission</span><span class="p">:</span>
+<span class="o">.</span><span class="n">Finished</span> <span class="n">sending</span> <span class="mi">4</span> <span class="n">packets</span><span class="o">.</span>
+<span class="o">*</span>
+<span class="n">Received</span> <span class="mi">2</span> <span class="n">packets</span><span class="p">,</span> <span class="n">got</span> <span class="mi">1</span> <span class="n">answers</span><span class="p">,</span> <span class="n">remaining</span> <span class="mi">3</span> <span class="n">packets</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ans</span>
+<span class="o">&lt;</span><span class="n">Results</span><span class="p">:</span> <span class="n">TCP</span><span class="p">:</span><span class="mi">0</span> <span class="n">UDP</span><span class="p">:</span><span class="mi">0</span> <span class="n">ICMP</span><span class="p">:</span><span class="mi">1</span> <span class="n">Other</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">unans</span>
+<span class="o">&lt;</span><span class="n">Unanswered</span><span class="p">:</span> <span class="n">TCP</span><span class="p">:</span><span class="mi">0</span> <span class="n">UDP</span><span class="p">:</span><span class="mi">0</span> <span class="n">ICMP</span><span class="p">:</span><span class="mi">3</span> <span class="n">Other</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span>
+</pre></div>
+		</article>
+
+	</section>
+
+	<footer valign="bottom">
+
+        
+        <a id="prev" href=page07.html>Prev</a>
+        
+
+        
+        <a id="next" href=page09.html>Next</a>
+        
+
+		<p>Securetia - Make Your Own Network Security Tools With Scapy &copy; 2018</p>
+        <img style="float: right; position: absolute; width: 180px; right: 50px; bottom: 10px;" src="logo.png" />
+	</footer>
+
+<script>
+
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '37') {
+        document.getElementById('prev').click();
+    } else if (e.keyCode == '39') {
+        document.getElementById('next').click();
+    }
+}
+
+</script>
+
+</body>
+
+</html>
+

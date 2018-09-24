@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Bienvenidos!</title>
+  <link rel="stylesheet" href="styles.css">
+
+<style>
+body {
+    font-family: sans-serif;
+    font-size: 2em;
+}
+
+html, body {
+    height: 90%;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 0px 0px 10px;
+}
+
+header {
+    text-align: center;
+}
+
+
+h1 {
+    font-size: 2em;
+    margin: 5px 0px 50px 0px;
+}
+
+
+img {
+    max-height: 600px;
+    max-width: 1200px;
+    vertical-align: middle;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+}
+
+#next, #prev {
+    visibility: hidden;
+    display: none;
+}
+
+ul {
+    list-style-type:square;
+}
+
+li {
+    margin-top: .75em;
+    margin-bottom: .75em;
+}
+
+footer {
+    text-align: center;
+    width: 95%;
+    position: fixed;
+    bottom: 0px;
+    font-size: .7em;
+    margin: 0px 0px 0px 0px;
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+	<section style="height: 80%">
+	
+		<article>
+            <h1>Bienvenidos!</h1>
+<p>aaaaa</p>
+		</article>
+
+	</section>
+
+	<footer valign="bottom">
+
+        
+
+        
+        <a id="next" href=page01.html>Next</a>
+        
+
+		<p>Securetia - Make Your Own Network Security Tools With Scapy &copy; 2018</p>
+        <img style="float: right; position: absolute; width: 180px; right: 50px; bottom: 10px;" src="logo.png" />
+	</footer>
+
+<script>
+
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '37') {
+        document.getElementById('prev').click();
+    } else if (e.keyCode == '39') {
+        document.getElementById('next').click();
+    }
+}
+
+</script>
+
+</body>
+
+</html>
+
