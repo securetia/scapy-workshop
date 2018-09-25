@@ -77,18 +77,19 @@ footer {
 	
 		<article>
             <h1>Nuestro Primer Paquete</h1>
-<div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">l3</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s1">&#39;8.8.4.4&#39;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">l4</span> <span class="o">=</span> <span class="n">ICMP</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">sr1</span><span class="p">(</span><span class="n">l3</span><span class="o">/</span><span class="n">l4</span><span class="p">)</span>
+<pre><code>:::py3
+&gt;&gt;&gt; l3 = IP(dst='8.8.4.4')
+&gt;&gt;&gt; l4 = ICMP()
+&gt;&gt;&gt; sr1(l3/l4)
 
-<span class="n">Begin</span> <span class="n">emission</span><span class="p">:</span>
-<span class="o">.</span><span class="n">Finished</span> <span class="n">sending</span> <span class="mi">1</span> <span class="n">packets</span><span class="o">.</span>
-<span class="o">*</span>
-<span class="n">Received</span> <span class="mi">2</span> <span class="n">packets</span><span class="p">,</span> <span class="n">got</span> <span class="mi">1</span> <span class="n">answers</span><span class="p">,</span> <span class="n">remaining</span> <span class="mi">0</span> <span class="n">packets</span>
-<span class="o">&lt;</span><span class="n">IP</span>  <span class="n">version</span><span class="o">=</span><span class="mi">4</span> <span class="n">ihl</span><span class="o">=</span><span class="mi">5</span> <span class="n">tos</span><span class="o">=</span><span class="mh">0x0</span> <span class="nb">len</span><span class="o">=</span><span class="mi">28</span> <span class="nb">id</span><span class="o">=</span><span class="mi">11010</span> <span class="n">flags</span><span class="o">=</span> <span class="n">frag</span><span class="o">=</span><span class="mi">0</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">63</span> <span class="n">proto</span><span class="o">=</span><span class="n">icmp</span> <span class="n">chksum</span><span class="o">=</span><span class="mh">0x34c1</span>
-<span class="n">src</span><span class="o">=</span><span class="mf">8.8</span><span class="o">.</span><span class="mf">4.4</span> <span class="n">dst</span><span class="o">=</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">2.15</span> <span class="n">options</span><span class="o">=</span><span class="p">[]</span> <span class="o">|&lt;</span><span class="n">ICMP</span>  <span class="nb">type</span><span class="o">=</span><span class="n">echo</span><span class="o">-</span><span class="n">reply</span> <span class="n">code</span><span class="o">=</span><span class="mi">0</span> <span class="n">chksum</span><span class="o">=</span><span class="mh">0xffff</span> <span class="nb">id</span><span class="o">=</span><span class="mh">0x0</span> 
-<span class="n">seq</span><span class="o">=</span><span class="mh">0x0</span> <span class="o">|&lt;</span><span class="n">Padding</span>  <span class="n">load</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00</span><span class="s1">&#39;</span> <span class="o">|&gt;&gt;&gt;</span>
-</pre></div>
+Begin emission:
+.Finished sending 1 packets.
+*
+Received 2 packets, got 1 answers, remaining 0 packets
+&lt;IP  version=4 ihl=5 tos=0x0 len=28 id=11010 flags= frag=0 ttl=63 proto=icmp chksum=0x34c1
+src=8.8.4.4 dst=10.0.2.15 options=[] |&lt;ICMP  type=echo-reply code=0 chksum=0xffff id=0x0 
+seq=0x0 |&lt;Padding  load='\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00' |&gt;&gt;&gt;
+</code></pre>
 		</article>
 
 	</section>

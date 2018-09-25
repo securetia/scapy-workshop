@@ -77,18 +77,19 @@ footer {
 	
 		<article>
             <h1>No-Respondidos vs Respondidos</h1>
-<div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">pkt</span> <span class="ow">in</span> <span class="n">unans</span><span class="p">:</span>
-<span class="o">...</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="n">pkt</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
-<span class="o">...</span><span class="p">:</span>    
-<span class="n">IP</span> <span class="o">/</span> <span class="n">ICMP</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">2.15</span> <span class="o">&gt;</span> <span class="mf">8.8</span><span class="o">.</span><span class="mf">4.5</span> <span class="n">echo</span><span class="o">-</span><span class="n">request</span> <span class="mi">0</span>
-<span class="n">IP</span> <span class="o">/</span> <span class="n">ICMP</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">2.15</span> <span class="o">&gt;</span> <span class="mf">8.8</span><span class="o">.</span><span class="mf">4.6</span> <span class="n">echo</span><span class="o">-</span><span class="n">request</span> <span class="mi">0</span>
-<span class="n">IP</span> <span class="o">/</span> <span class="n">ICMP</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">2.15</span> <span class="o">&gt;</span> <span class="mf">8.8</span><span class="o">.</span><span class="mf">4.7</span> <span class="n">echo</span><span class="o">-</span><span class="n">request</span> <span class="mi">0</span>
+<pre><code>:::py3
+&gt;&gt;&gt; for pkt in unans:
+...:    print(pkt.summary())
+...:    
+IP / ICMP 10.0.2.15 &gt; 8.8.4.5 echo-request 0
+IP / ICMP 10.0.2.15 &gt; 8.8.4.6 echo-request 0
+IP / ICMP 10.0.2.15 &gt; 8.8.4.7 echo-request 0
 
-<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span><span class="n">pkt</span> <span class="ow">in</span> <span class="n">ans</span><span class="p">:</span>
-<span class="o">...</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">summary</span><span class="p">(),</span> <span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="n">pkt</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
-<span class="o">...</span><span class="p">:</span>    
-<span class="n">IP</span> <span class="o">/</span> <span class="n">ICMP</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">2.15</span> <span class="o">&gt;</span> <span class="mf">8.8</span><span class="o">.</span><span class="mf">4.4</span> <span class="n">echo</span><span class="o">-</span><span class="n">request</span> <span class="mi">0</span> <span class="o">|</span> <span class="n">IP</span> <span class="o">/</span> <span class="n">ICMP</span> <span class="mf">8.8</span><span class="o">.</span><span class="mf">4.4</span> <span class="o">&gt;</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">2.15</span> <span class="n">echo</span><span class="o">-</span><span class="n">reply</span> <span class="mi">0</span> <span class="o">/</span> <span class="n">Padding</span>
-</pre></div>
+&gt;&gt;&gt; for s,pkt in ans:
+...:    print(s.summary(), '|', pkt.summary())
+...:    
+IP / ICMP 10.0.2.15 &gt; 8.8.4.4 echo-request 0 | IP / ICMP 8.8.4.4 &gt; 10.0.2.15 echo-reply 0 / Padding
+</code></pre>
 		</article>
 
 	</section>
@@ -99,6 +100,8 @@ footer {
         <a id="prev" href=page08.html>Prev</a>
         
 
+        
+        <a id="next" href=page10.html>Next</a>
         
 
 		<p>Securetia - Make Your Own Network Security Tools With Scapy &copy; 2018</p>

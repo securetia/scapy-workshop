@@ -1,6 +1,6 @@
-# Bienvenidos!
+# Make Your Own Network Security Tools With Scapy
 
-aaaaa
+![alt text](background.jpeg)
 
 # Temario
 
@@ -154,3 +154,30 @@ From: Scapy Official Docs
     ...:    
     IP / ICMP 10.0.2.15 > 8.8.4.4 echo-request 0 | IP / ICMP 8.8.4.4 > 10.0.2.15 echo-reply 0 / Padding
 
+# Sniffing
+
+![alt text](sniffing.jpg)
+
+# Placa en estado promiscuo
+
+![alt text](promiscuo.png)
+
+# ARP Discovery
+
+![alt text](arp-request.png)
+
+# ARP Discovery (2)
+
+![alt text](arp-replay.png)
+
+# Man-In-The-Middle (MITM)
+
+![alt text](mitm.png)
+
+# ARP Spoofing
+
+![alt text](arp-spoofing.jpg)
+
+# Modificación de Tráfico HTTP
+
+![alt text](http-manipulation.png)

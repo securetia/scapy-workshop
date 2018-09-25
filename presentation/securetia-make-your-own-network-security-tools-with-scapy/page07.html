@@ -77,30 +77,31 @@ footer {
 	
 		<article>
             <h1>¿Qué es un "layer"? (2)</h1>
-<div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">l3</span><span class="o">.</span><span class="n">show2</span><span class="p">()</span>
-<span class="c1">###[ IP ]### </span>
-  <span class="n">version</span><span class="o">=</span> <span class="mi">4</span>
-  <span class="n">ihl</span><span class="o">=</span> <span class="mi">5</span>
-  <span class="n">tos</span><span class="o">=</span> <span class="mh">0x0</span>
-  <span class="nb">len</span><span class="o">=</span> <span class="mi">20</span>
-  <span class="nb">id</span><span class="o">=</span> <span class="mi">1</span>
-  <span class="n">flags</span><span class="o">=</span> 
-  <span class="n">frag</span><span class="o">=</span> <span class="mi">0</span>
-  <span class="n">ttl</span><span class="o">=</span> <span class="mi">64</span>
-  <span class="n">proto</span><span class="o">=</span> <span class="n">hopopt</span>
-  <span class="n">chksum</span><span class="o">=</span> <span class="mh">0x5ecb</span>
-  <span class="n">src</span><span class="o">=</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">2.15</span>
-  <span class="n">dst</span><span class="o">=</span> <span class="mf">8.8</span><span class="o">.</span><span class="mf">4.4</span>
-  \<span class="n">options</span>\
+<pre><code>:::py3
+&gt;&gt;&gt; l3.show2()
+###[ IP ]### 
+  version= 4
+  ihl= 5
+  tos= 0x0
+  len= 20
+  id= 1
+  flags= 
+  frag= 0
+  ttl= 64
+  proto= hopopt
+  chksum= 0x5ecb
+  src= 10.0.2.15
+  dst= 8.8.4.4
+  \options\
 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">l4</span><span class="o">.</span><span class="n">show2</span><span class="p">()</span>
-<span class="c1">###[ ICMP ]### </span>
-  <span class="nb">type</span><span class="o">=</span> <span class="n">echo</span><span class="o">-</span><span class="n">request</span>
-  <span class="n">code</span><span class="o">=</span> <span class="mi">0</span>
-  <span class="n">chksum</span><span class="o">=</span> <span class="mh">0xf7ff</span>
-  <span class="nb">id</span><span class="o">=</span> <span class="mh">0x0</span>
-  <span class="n">seq</span><span class="o">=</span> <span class="mh">0x0</span>
-</pre></div>
+&gt;&gt;&gt; l4.show2()
+###[ ICMP ]### 
+  type= echo-request
+  code= 0
+  chksum= 0xf7ff
+  id= 0x0
+  seq= 0x0
+</code></pre>
 		</article>
 
 	</section>
