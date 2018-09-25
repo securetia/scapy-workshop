@@ -4,7 +4,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>¿Qué es un &#34;layer&#34;? (2)</title>
+	<title>Nuestro Primer Paquete</title>
   <link rel="stylesheet" href="styles.css">
 
 <style>
@@ -76,31 +76,19 @@ footer {
 	<section style="height: 80%">
 	
 		<article>
-            <h1>¿Qué es un "layer"? (2)</h1>
+            <h1>Nuestro Primer Paquete</h1>
 <pre><code>:::py3
-&gt;&gt;&gt; l3.show2()
-###[ IP ]### 
-  version= 4
-  ihl= 5
-  tos= 0x0
-  len= 20
-  id= 1
-  flags= 
-  frag= 0
-  ttl= 64
-  proto= hopopt
-  chksum= 0x5ecb
-  src= 10.0.2.15
-  dst= 8.8.4.4
-  \options\
+&gt;&gt;&gt; l3 = IP(dst='8.8.4.4')
+&gt;&gt;&gt; l4 = ICMP()
+&gt;&gt;&gt; sr1(l3/l4)
 
-&gt;&gt;&gt; l4.show2()
-###[ ICMP ]### 
-  type= echo-request
-  code= 0
-  chksum= 0xf7ff
-  id= 0x0
-  seq= 0x0
+Begin emission:
+.Finished sending 1 packets.
+*
+Received 2 packets, got 1 answers, remaining 0 packets
+&lt;IP  version=4 ihl=5 tos=0x0 len=28 id=11010 flags= frag=0 ttl=63 proto=icmp chksum=0x34c1
+src=8.8.4.4 dst=10.0.2.15 options=[] |&lt;ICMP  type=echo-reply code=0 chksum=0xffff id=0x0 
+seq=0x0 |&lt;Padding  load='\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00' |&gt;&gt;&gt;
 </code></pre>
 		</article>
 

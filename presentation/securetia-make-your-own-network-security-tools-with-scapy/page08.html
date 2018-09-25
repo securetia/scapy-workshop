@@ -4,7 +4,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Generando varios paquetes</title>
+	<title>¿Qué es un &#34;layer&#34;?</title>
   <link rel="stylesheet" href="styles.css">
 
 <style>
@@ -76,18 +76,31 @@ footer {
 	<section style="height: 80%">
 	
 		<article>
-            <h1>Generando varios paquetes</h1>
+            <h1>¿Qué es un "layer"?</h1>
 <pre><code>:::py3
-&gt;&gt;&gt; l3 = IP(dst='8.8.4.4/30')
-&gt;&gt;&gt; ans,unans = sr(l3/l4, timeout=3)
-Begin emission:
-.Finished sending 4 packets.
-*
-Received 2 packets, got 1 answers, remaining 3 packets
-&gt;&gt;&gt; ans
-&lt;Results: TCP:0 UDP:0 ICMP:1 Other:0&gt;
-&gt;&gt;&gt; unans
-&lt;Unanswered: TCP:0 UDP:0 ICMP:3 Other:0&gt;
+&gt;&gt;&gt; l3.show()
+###[ IP ]### 
+  version= 4
+  ihl= None
+  tos= 0x0
+  len= None
+  id= 1
+  flags= 
+  frag= 0
+  ttl= 64
+  proto= hopopt
+  chksum= None
+  src= 10.0.2.15
+  dst= 8.8.4.4
+  \options\
+
+&gt;&gt;&gt; l4.show()
+###[ ICMP ]### 
+  type= echo-request
+  code= 0
+  chksum= None
+  id= 0x0
+  seq= 0x0
 </code></pre>
 		</article>
 

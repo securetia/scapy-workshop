@@ -2,6 +2,14 @@
 
 ![alt text](background.jpeg)
 
+# Quiénes Somos?
+
+![alt text](securetia.png)
+
+# Nuestros Desarrollos
+
+![alt text](investigacion.png)
+
 # Temario
 
 - Introducción a Scapy
@@ -181,3 +189,11 @@ From: Scapy Official Docs
 # Modificación de Tráfico HTTP
 
 ![alt text](http-manipulation.png)
+
+# Preguntas?
+
+![alt text](hacker-questions.jpg)
+
+# Contactanos
+
+![alt text](contacto.png)
