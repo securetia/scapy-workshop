@@ -1,8 +1,0 @@
-colorful
-autumn
-murphy
-monokai
-native
-vim
-tango
-
