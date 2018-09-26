@@ -77,13 +77,21 @@ footer {
 	
 		<article>
             <h1>iptables - NFQUEUE</h1>
-<p><em>"NFQUEUE permite pasar paquetes al espacio de usuario, para decidir qué hacer con ellos."</em></p>
-<p>En python, podemos utilizar el módulo fnfqueue (https://github.com/notti/fnfqueue)</p>
-<div class="codehilite"><pre><span></span><span class="err">$</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">fnfqueue</span>
+<div class="codehilite"><pre><span></span><span class="err">$</span> <span class="n">iptables</span><span class="o">-</span><span class="n">restore</span> <span class="o">&lt;</span> <span class="n">iptables</span><span class="o">-</span><span class="n">nfqueue</span><span class="o">.</span><span class="n">rules</span>
+
+<span class="err">$</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">L</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">v</span>
+
+<span class="n">Chain</span> <span class="n">INPUT</span> <span class="p">(</span><span class="n">policy</span> <span class="n">ACCEPT</span> <span class="mi">0</span> <span class="n">packets</span><span class="p">,</span> <span class="mi">0</span> <span class="nb">bytes</span><span class="p">)</span>
+ <span class="n">pkts</span> <span class="nb">bytes</span> <span class="n">target</span>     <span class="n">prot</span> <span class="n">opt</span> <span class="ow">in</span>     <span class="n">out</span>     <span class="n">source</span>               <span class="n">destination</span>         
+    <span class="mi">0</span>     <span class="mi">0</span> <span class="n">NFQUEUE</span>    <span class="n">tcp</span>  <span class="o">--</span>  <span class="n">lo</span>     <span class="o">*</span>       <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">0</span>            <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">0</span>            <span class="n">tcp</span> <span class="n">spt</span><span class="p">:</span><span class="mi">80</span> <span class="n">NFQUEUE</span> <span class="n">num</span> <span class="mi">0</span>
+
+<span class="n">Chain</span> <span class="n">FORWARD</span> <span class="p">(</span><span class="n">policy</span> <span class="n">ACCEPT</span> <span class="mi">0</span> <span class="n">packets</span><span class="p">,</span> <span class="mi">0</span> <span class="nb">bytes</span><span class="p">)</span>
+ <span class="n">pkts</span> <span class="nb">bytes</span> <span class="n">target</span>     <span class="n">prot</span> <span class="n">opt</span> <span class="ow">in</span>     <span class="n">out</span>     <span class="n">source</span>               <span class="n">destination</span>
+
+<span class="n">Chain</span> <span class="n">OUTPUT</span> <span class="p">(</span><span class="n">policy</span> <span class="n">ACCEPT</span> <span class="mi">0</span> <span class="n">packets</span><span class="p">,</span> <span class="mi">0</span> <span class="nb">bytes</span><span class="p">)</span>
+ <span class="n">pkts</span> <span class="nb">bytes</span> <span class="n">target</span>     <span class="n">prot</span> <span class="n">opt</span> <span class="ow">in</span>     <span class="n">out</span>     <span class="n">source</span>               <span class="n">destination</span>         
+    <span class="mi">0</span>     <span class="mi">0</span> <span class="n">NFQUEUE</span>    <span class="n">tcp</span>  <span class="o">--</span>  <span class="o">*</span>      <span class="n">lo</span>      <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">0</span>            <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">0</span>            <span class="n">tcp</span> <span class="n">dpt</span><span class="p">:</span><span class="mi">80</span> <span class="n">NFQUEUE</span> <span class="n">num</span> <span class="mi">0</span>
 </pre></div>
-
-
-<p><strong>La virtual ya lo tiene instalado!</strong></p>
 		</article>
 
 	</section>

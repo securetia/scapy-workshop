@@ -4,7 +4,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Modificación de Tráfico</title>
+	<title>Análisis con Scapy + NFQUEUE</title>
   <link rel="stylesheet" href="styles.css">
 
 <style>
@@ -76,17 +76,30 @@ footer {
 	<section style="height: 80%">
 	
 		<article>
-            <h1>Modificación de Tráfico</h1>
-<p><em>"Al querer modificar paquetes, vamos a encontrar problemas. Con algunos, Scapy nos va ayudar."</em></p>
-<p>Ejemplos:</p>
-<ol>
-<li>IP: Len Field</li>
-<li>IP: Checksum Field</li>
-<li>TCP: Checksum Field</li>
-<li>HTTP: Not-Modified</li>
-<li>HTTP: Encoding Header</li>
-<li>HTTP: Content-Lenght Header</li>
-</ol>
+            <h1>Análisis con Scapy + NFQUEUE</h1>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">fnfqueue</span>
+<span class="kn">from</span> <span class="nn">scapy.all</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">queue</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">fnfqueue</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="mh">0xffff</span><span class="p">,</span> <span class="n">fnfqueue</span><span class="o">.</span><span class="n">COPY_PACKET</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Access denied; Do I have root rights or the needed capabilities?&quot;</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">packet</span> <span class="ow">in</span> <span class="n">conn</span><span class="p">:</span>
+
+        <span class="n">pkt</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">packet</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span>
+        <span class="n">pkt</span><span class="p">[</span><span class="n">TCP</span><span class="p">]</span><span class="o">.</span><span class="n">show2</span><span class="p">()</span>
+        <span class="n">packet</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
 		</article>
 
 	</section>

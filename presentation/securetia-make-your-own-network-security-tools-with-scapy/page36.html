@@ -4,7 +4,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>TCP Handshake</title>
+	<title>RST Packets</title>
   <link rel="stylesheet" href="styles.css">
 
 <style>
@@ -76,22 +76,20 @@ footer {
 	<section style="height: 80%">
 	
 		<article>
-            <h1>TCP Handshake</h1>
-<div class="codehilite"><pre><span></span><span class="err">$</span> <span class="o">./</span><span class="n">tcp_handshake</span><span class="o">.</span><span class="n">py</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span> <span class="mi">22</span>
-<span class="c1">###[ TCP ]### </span>
-     <span class="n">sport</span>     <span class="o">=</span> <span class="n">ssh</span>
-     <span class="n">dport</span>     <span class="o">=</span> <span class="mi">24423</span>
-     <span class="n">seq</span>       <span class="o">=</span> <span class="mi">1526338433</span>
-     <span class="n">ack</span>       <span class="o">=</span> <span class="mi">1</span>
-     <span class="n">dataofs</span>   <span class="o">=</span> <span class="mi">5</span>
-     <span class="n">reserved</span>  <span class="o">=</span> <span class="mi">0</span>
-     <span class="n">flags</span>     <span class="o">=</span> <span class="n">PA</span>
-     <span class="n">window</span>    <span class="o">=</span> <span class="mi">43690</span>
-     <span class="n">chksum</span>    <span class="o">=</span> <span class="mh">0xfe3c</span>
-     <span class="n">urgptr</span>    <span class="o">=</span> <span class="mi">0</span>
-     <span class="n">options</span>   <span class="o">=</span> <span class="p">[]</span>
-<span class="c1">###[ Raw ]### </span>
-        <span class="n">load</span>      <span class="o">=</span> <span class="s1">&#39;SSH-2.0-OpenSSH_7.8p1 Debian-1</span><span class="se">\r\n</span><span class="s1">&#39;</span>
+            <h1>RST Packets</h1>
+<div class="codehilite"><pre><span></span><span class="err">$</span> <span class="n">iptables</span><span class="o">-</span><span class="n">restore</span> <span class="o">&lt;</span> <span class="n">iptables</span><span class="o">-</span><span class="n">no</span><span class="o">-</span><span class="n">rst</span><span class="o">.</span><span class="n">rules</span>
+
+<span class="err">$</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">L</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">v</span>
+
+<span class="n">Chain</span> <span class="n">INPUT</span> <span class="p">(</span><span class="n">policy</span> <span class="n">ACCEPT</span> <span class="mi">0</span> <span class="n">packets</span><span class="p">,</span> <span class="mi">0</span> <span class="nb">bytes</span><span class="p">)</span>
+ <span class="n">pkts</span> <span class="nb">bytes</span> <span class="n">target</span>     <span class="n">prot</span> <span class="n">opt</span> <span class="ow">in</span>     <span class="n">out</span>     <span class="n">source</span>               <span class="n">destination</span>
+
+<span class="n">Chain</span> <span class="n">FORWARD</span> <span class="p">(</span><span class="n">policy</span> <span class="n">ACCEPT</span> <span class="mi">0</span> <span class="n">packets</span><span class="p">,</span> <span class="mi">0</span> <span class="nb">bytes</span><span class="p">)</span>
+ <span class="n">pkts</span> <span class="nb">bytes</span> <span class="n">target</span>     <span class="n">prot</span> <span class="n">opt</span> <span class="ow">in</span>     <span class="n">out</span>     <span class="n">source</span>               <span class="n">destination</span>
+
+<span class="n">Chain</span> <span class="n">OUTPUT</span> <span class="p">(</span><span class="n">policy</span> <span class="n">ACCEPT</span> <span class="mi">0</span> <span class="n">packets</span><span class="p">,</span> <span class="mi">0</span> <span class="nb">bytes</span><span class="p">)</span>
+ <span class="n">pkts</span> <span class="nb">bytes</span> <span class="n">target</span>     <span class="n">prot</span> <span class="n">opt</span> <span class="ow">in</span>     <span class="n">out</span>     <span class="n">source</span>               <span class="n">destination</span>         
+    <span class="mi">0</span>     <span class="mi">0</span> <span class="n">DROP</span>       <span class="n">tcp</span>  <span class="o">--</span>  <span class="o">*</span>      <span class="o">*</span>       <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">0</span>            <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">0</span>            <span class="n">tcp</span> <span class="n">flags</span><span class="p">:</span><span class="mh">0x04</span><span class="o">/</span><span class="mh">0x04</span>
 </pre></div>
 		</article>
 

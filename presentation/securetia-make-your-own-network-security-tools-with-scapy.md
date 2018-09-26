@@ -12,12 +12,15 @@
 
 # Temario
 
-- Introducción a Scapy
-- Sniffing ARP
+- Modelo OSI
+- ARP Sniff
 - ARP Discovery
 - Man-In-The-Middle (MITM)
 - ARP Spoofing
 - IP Forwarding
+- TCP Handshake
+- IPTables NFQUEUE
+- Python + NFQUEUE
 - Sniffing HTTP
 - Modificación de Tráfico HTTP
 
@@ -406,6 +409,10 @@
 
         time.sleep(1)
 
+# IP Forwarding
+
+    :::bash
+    $ echo 1 > /proc/sys/net/ipv4/ip_forward
 
 # TCP Handshake
 
