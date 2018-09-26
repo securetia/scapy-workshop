@@ -77,22 +77,23 @@ footer {
 	
 		<article>
             <h1>TCP Handshake</h1>
-<div class="codehilite"><pre><span></span><span class="err">$</span> <span class="o">./</span><span class="n">tcp_handshake</span><span class="o">.</span><span class="n">py</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span> <span class="mi">22</span>
-<span class="c1">###[ TCP ]### </span>
-     <span class="n">sport</span>     <span class="o">=</span> <span class="n">ssh</span>
-     <span class="n">dport</span>     <span class="o">=</span> <span class="mi">24423</span>
-     <span class="n">seq</span>       <span class="o">=</span> <span class="mi">1526338433</span>
-     <span class="n">ack</span>       <span class="o">=</span> <span class="mi">1</span>
-     <span class="n">dataofs</span>   <span class="o">=</span> <span class="mi">5</span>
-     <span class="n">reserved</span>  <span class="o">=</span> <span class="mi">0</span>
-     <span class="n">flags</span>     <span class="o">=</span> <span class="n">PA</span>
-     <span class="n">window</span>    <span class="o">=</span> <span class="mi">43690</span>
-     <span class="n">chksum</span>    <span class="o">=</span> <span class="mh">0xfe3c</span>
-     <span class="n">urgptr</span>    <span class="o">=</span> <span class="mi">0</span>
-     <span class="n">options</span>   <span class="o">=</span> <span class="p">[]</span>
-<span class="c1">###[ Raw ]### </span>
-        <span class="n">load</span>      <span class="o">=</span> <span class="s1">&#39;SSH-2.0-OpenSSH_7.8p1 Debian-1</span><span class="se">\r\n</span><span class="s1">&#39;</span>
-</pre></div>
+<pre><code>:::py3
+$ ./tcp_handshake.py 127.0.0.1 22
+###[ TCP ]### 
+     sport     = ssh
+     dport     = 24423
+     seq       = 1526338433
+     ack       = 1
+     dataofs   = 5
+     reserved  = 0
+     flags     = PA
+     window    = 43690
+     chksum    = 0xfe3c
+     urgptr    = 0
+     options   = []
+###[ Raw ]### 
+        load      = 'SSH-2.0-OpenSSH_7.8p1 Debian-1\r\n'
+</code></pre>
 		</article>
 
 	</section>

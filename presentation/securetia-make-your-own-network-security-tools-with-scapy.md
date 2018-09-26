@@ -13,6 +13,7 @@
 # Temario
 
 - Modelo OSI
+- Introducción a Scapy
 - ARP Sniff
 - ARP Discovery
 - Man-In-The-Middle (MITM)
@@ -21,8 +22,8 @@
 - TCP Handshake
 - IPTables NFQUEUE
 - Python + NFQUEUE
-- Sniffing HTTP
-- Modificación de Tráfico HTTP
+- Interceptación de Tráfico
+- Manipulación de Tráfico HTTP
 
 # Modelo OSI
 
@@ -485,7 +486,7 @@
     ###[ Raw ]### 
             load      = 'SSH-2.0-OpenSSH_7.8p1 Debian-1\r\n'
 
-# Modificación de Tráfico HTTP
+# Manipulación de Tráfico HTTP
 
 ![alt text](http-manipulation.png)
 
@@ -554,7 +555,7 @@ En python, podemos utilizar el módulo fnfqueue (https://github.com/notti/fnfque
 
     conn.close()
 
-# Modificación de Tráfico
+# Manipulación de Tráfico
 
 *"Al querer modificar paquetes, vamos a encontrar problemas. Con algunos, Scapy nos va ayudar."*
 
@@ -567,7 +568,7 @@ Ejemplos:
 5. HTTP: Encoding Header
 6. HTTP: Content-Lenght Header
 
-# Modificación con Scapy + NFQUEUE
+# Manipulando con Scapy + NFQUEUE
 
     :::py3
     pkt = IP(packet.payload)

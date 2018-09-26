@@ -77,32 +77,33 @@ footer {
 	
 		<article>
             <h1>Interpretando las respuestas</h1>
-<div class="codehilite"><pre><span></span><span class="c1">###[ TCP ]### </span>
-  <span class="n">sport</span><span class="o">=</span> <span class="n">ftp_data</span>
-  <span class="n">dport</span><span class="o">=</span> <span class="n">telnet</span>
-  <span class="n">seq</span><span class="o">=</span> <span class="mi">0</span>
-  <span class="n">ack</span><span class="o">=</span> <span class="mi">0</span>
-  <span class="n">dataofs</span><span class="o">=</span> <span class="mi">5</span>
-  <span class="n">reserved</span><span class="o">=</span> <span class="mi">0</span>
-  <span class="n">flags</span><span class="o">=</span> <span class="n">S</span>
-  <span class="n">window</span><span class="o">=</span> <span class="mi">8192</span>
-  <span class="n">chksum</span><span class="o">=</span> <span class="mh">0x91b5</span>
-  <span class="n">urgptr</span><span class="o">=</span> <span class="mi">0</span>
-  <span class="n">options</span><span class="o">=</span> <span class="p">[]</span>
+<pre><code>:::py3
+###[ TCP ]### 
+  sport= ftp_data
+  dport= telnet
+  seq= 0
+  ack= 0
+  dataofs= 5
+  reserved= 0
+  flags= S
+  window= 8192
+  chksum= 0x91b5
+  urgptr= 0
+  options= []
 
-<span class="c1">###[ TCP ]### </span>
-  <span class="n">sport</span><span class="o">=</span> <span class="n">telnet</span>
-  <span class="n">dport</span><span class="o">=</span> <span class="n">ftp_data</span>
-  <span class="n">seq</span><span class="o">=</span> <span class="mi">0</span>
-  <span class="n">ack</span><span class="o">=</span> <span class="mi">1</span>
-  <span class="n">dataofs</span><span class="o">=</span> <span class="mi">5</span>
-  <span class="n">reserved</span><span class="o">=</span> <span class="mi">0</span>
-  <span class="n">flags</span><span class="o">=</span> <span class="n">RA</span>
-  <span class="n">window</span><span class="o">=</span> <span class="mi">0</span>
-  <span class="n">chksum</span><span class="o">=</span> <span class="mh">0xb1a2</span>
-  <span class="n">urgptr</span><span class="o">=</span> <span class="mi">0</span>
-  <span class="n">options</span><span class="o">=</span> <span class="p">[]</span>
-</pre></div>
+###[ TCP ]### 
+  sport= telnet
+  dport= ftp_data
+  seq= 0
+  ack= 1
+  dataofs= 5
+  reserved= 0
+  flags= RA
+  window= 0
+  chksum= 0xb1a2
+  urgptr= 0
+  options= []
+</code></pre>
 		</article>
 
 	</section>

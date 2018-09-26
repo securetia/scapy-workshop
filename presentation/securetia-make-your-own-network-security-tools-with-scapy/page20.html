@@ -77,18 +77,19 @@ footer {
 	
 		<article>
             <h1>Generando varios paquetes</h1>
-<div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">l4</span> <span class="o">=</span> <span class="n">TCP</span><span class="p">(</span><span class="n">dport</span><span class="o">=</span><span class="p">[</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">])</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">ans</span><span class="p">,</span><span class="n">unans</span> <span class="o">=</span> <span class="n">sr</span><span class="p">(</span><span class="n">l3</span><span class="o">/</span><span class="n">l4</span><span class="p">)</span>
-<span class="n">Begin</span> <span class="n">emission</span><span class="p">:</span>
-<span class="o">.*</span><span class="n">Finished</span> <span class="n">sending</span> <span class="mi">2</span> <span class="n">packets</span><span class="o">.</span>
-<span class="o">..*</span>
-<span class="n">Received</span> <span class="mi">5</span> <span class="n">packets</span><span class="p">,</span> <span class="n">got</span> <span class="mi">2</span> <span class="n">answers</span><span class="p">,</span> <span class="n">remaining</span> <span class="mi">0</span> <span class="n">packets</span>
-<span class="o">&gt;&gt;&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span><span class="n">r</span> <span class="ow">in</span> <span class="n">ans</span><span class="p">:</span>
-<span class="o">...</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
-<span class="o">...</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
-<span class="o">...</span><span class="p">:</span>
-</pre></div>
+<pre><code>:::py3
+&gt;&gt;&gt; l4 = TCP(dport=[22,23])
+&gt;&gt;&gt; ans,unans = sr(l3/l4)
+Begin emission:
+.*Finished sending 2 packets.
+..*
+Received 5 packets, got 2 answers, remaining 0 packets
+&gt;&gt;&gt;
+&gt;&gt;&gt; for s,r in ans:
+...:    print(s.summary())
+...:    print(r.summary())
+...:
+</code></pre>
 		</article>
 
 	</section>
