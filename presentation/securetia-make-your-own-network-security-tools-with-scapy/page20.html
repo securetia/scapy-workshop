@@ -4,7 +4,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Contactanos</title>
+	<title>Generando varios paquetes</title>
   <link rel="stylesheet" href="styles.css">
 
 <style>
@@ -76,8 +76,19 @@ footer {
 	<section style="height: 80%">
 	
 		<article>
-            <h1>Contactanos</h1>
-<p><img alt="alt text" src="contacto.png" /></p>
+            <h1>Generando varios paquetes</h1>
+<div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">l4</span> <span class="o">=</span> <span class="n">TCP</span><span class="p">(</span><span class="n">dport</span><span class="o">=</span><span class="p">[</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ans</span><span class="p">,</span><span class="n">unans</span> <span class="o">=</span> <span class="n">sr</span><span class="p">(</span><span class="n">l3</span><span class="o">/</span><span class="n">l4</span><span class="p">)</span>
+<span class="n">Begin</span> <span class="n">emission</span><span class="p">:</span>
+<span class="o">.*</span><span class="n">Finished</span> <span class="n">sending</span> <span class="mi">2</span> <span class="n">packets</span><span class="o">.</span>
+<span class="o">..*</span>
+<span class="n">Received</span> <span class="mi">5</span> <span class="n">packets</span><span class="p">,</span> <span class="n">got</span> <span class="mi">2</span> <span class="n">answers</span><span class="p">,</span> <span class="n">remaining</span> <span class="mi">0</span> <span class="n">packets</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span><span class="n">r</span> <span class="ow">in</span> <span class="n">ans</span><span class="p">:</span>
+<span class="o">...</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="o">...</span><span class="p">:</span>    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="o">...</span><span class="p">:</span>
+</pre></div>
 		</article>
 
 	</section>
@@ -88,6 +99,8 @@ footer {
         <a id="prev" href=page19.html>Prev</a>
         
 
+        
+        <a id="next" href=page21.html>Next</a>
         
 
 		<p>Securetia - Make Your Own Network Security Tools With Scapy &copy; 2018</p>

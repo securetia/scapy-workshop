@@ -4,7 +4,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Layer4 - show()</title>
+	<title>Interpretando las respuestas</title>
   <link rel="stylesheet" href="styles.css">
 
 <style>
@@ -76,20 +76,32 @@ footer {
 	<section style="height: 80%">
 	
 		<article>
-            <h1>Layer4 - show()</h1>
-<div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">l4</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="c1">###[ TCP ]### </span>
+            <h1>Interpretando las respuestas</h1>
+<div class="codehilite"><pre><span></span><span class="c1">###[ TCP ]### </span>
   <span class="n">sport</span><span class="o">=</span> <span class="n">ftp_data</span>
-  <span class="n">dport</span><span class="o">=</span> <span class="n">http</span>
+  <span class="n">dport</span><span class="o">=</span> <span class="n">ssh</span>
   <span class="n">seq</span><span class="o">=</span> <span class="mi">0</span>
   <span class="n">ack</span><span class="o">=</span> <span class="mi">0</span>
-  <span class="n">dataofs</span><span class="o">=</span> <span class="kc">None</span>
+  <span class="n">dataofs</span><span class="o">=</span> <span class="mi">5</span>
   <span class="n">reserved</span><span class="o">=</span> <span class="mi">0</span>
   <span class="n">flags</span><span class="o">=</span> <span class="n">S</span>
   <span class="n">window</span><span class="o">=</span> <span class="mi">8192</span>
-  <span class="n">chksum</span><span class="o">=</span> <span class="kc">None</span>
+  <span class="n">chksum</span><span class="o">=</span> <span class="mh">0x91b6</span>
   <span class="n">urgptr</span><span class="o">=</span> <span class="mi">0</span>
   <span class="n">options</span><span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">###[ TCP ]### </span>
+  <span class="n">sport</span><span class="o">=</span> <span class="n">ssh</span>
+  <span class="n">dport</span><span class="o">=</span> <span class="n">ftp_data</span>
+  <span class="n">seq</span><span class="o">=</span> <span class="mi">3900132378</span>
+  <span class="n">ack</span><span class="o">=</span> <span class="mi">1</span>
+  <span class="n">dataofs</span><span class="o">=</span> <span class="mi">6</span>
+  <span class="n">reserved</span><span class="o">=</span> <span class="mi">0</span>
+  <span class="n">flags</span><span class="o">=</span> <span class="n">SA</span>
+  <span class="n">window</span><span class="o">=</span> <span class="mi">43690</span>
+  <span class="n">chksum</span><span class="o">=</span> <span class="mh">0xfe20</span>
+  <span class="n">urgptr</span><span class="o">=</span> <span class="mi">0</span>
+  <span class="n">options</span><span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;MSS&#39;</span><span class="p">,</span> <span class="mi">65495</span><span class="p">)]</span>
 </pre></div>
 		</article>
 
@@ -98,11 +110,11 @@ footer {
 	<footer valign="bottom">
 
         
-        <a id="prev" href=page10.html>Prev</a>
+        <a id="prev" href=page21.html>Prev</a>
         
 
         
-        <a id="next" href=page12.html>Next</a>
+        <a id="next" href=page23.html>Next</a>
         
 
 		<p>Securetia - Make Your Own Network Security Tools With Scapy &copy; 2018</p>

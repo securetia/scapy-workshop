@@ -4,7 +4,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Sniffing</title>
+	<title>Layer4 - show2()</title>
   <link rel="stylesheet" href="styles.css">
 
 <style>
@@ -76,8 +76,22 @@ footer {
 	<section style="height: 80%">
 	
 		<article>
-            <h1>Sniffing</h1>
-<p><img alt="alt text" src="sniffing.jpg" /></p>
+            <h1>Layer4 - show2()</h1>
+<div class="codehilite"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">l4</span><span class="o">.</span><span class="n">show2</span><span class="p">()</span>
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">No</span> <span class="n">IP</span> <span class="n">underlayer</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">checksum</span><span class="o">.</span> <span class="n">Leaving</span> <span class="n">null</span><span class="o">.</span>
+<span class="c1">###[ TCP ]### </span>
+  <span class="n">sport</span><span class="o">=</span> <span class="n">ftp_data</span>
+  <span class="n">dport</span><span class="o">=</span> <span class="n">http</span>
+  <span class="n">seq</span><span class="o">=</span> <span class="mi">0</span>
+  <span class="n">ack</span><span class="o">=</span> <span class="mi">0</span>
+  <span class="n">dataofs</span><span class="o">=</span> <span class="mi">5</span>
+  <span class="n">reserved</span><span class="o">=</span> <span class="mi">0</span>
+  <span class="n">flags</span><span class="o">=</span> <span class="n">S</span>
+  <span class="n">window</span><span class="o">=</span> <span class="mi">8192</span>
+  <span class="n">chksum</span><span class="o">=</span> <span class="mh">0x0</span>
+  <span class="n">urgptr</span><span class="o">=</span> <span class="mi">0</span>
+  <span class="n">options</span><span class="o">=</span> <span class="p">[]</span>
+</pre></div>
 		</article>
 
 	</section>
