@@ -204,8 +204,9 @@
     Finished sending 1 packets.
     .*
     Received 2 packets, got 1 answers, remaining 0 packets
-    <IP  version=4 ihl=5 tos=0x0 len=28 id=38004 flags= frag=0 ttl=64 proto=icmp chksum=0xe86a src=127.0.0.1
-    dst=127.0.0.1 options=[] |<ICMP  type=echo-reply code=0 chksum=0xffff id=0x0 seq=0x0 |>>
+    <IP  version=4 ihl=5 tos=0x0 len=44 id=0 flags=DF frag=0 ttl=64 proto=tcp chksum=0x3cca
+    src=127.0.0.1 dst=127.0.0.1 options=[] |<TCP  sport=http dport=ftp_data seq=469287050 
+    ack=1 dataofs=6 reserved=0 flags=SA window=43690 chksum=0xfe20 urgptr=0 options=[('MSS', 65495)] |>>
 
 # ¿De qué comandos disponemos?
 
@@ -613,5 +614,4 @@ Ejemplos:
 <span>https://github.com/securetia/</span><br>
 <span>https://instagram.com/securetia/</span><br>
 <span>https://twitter.com/securetia</span><br>
-
 
