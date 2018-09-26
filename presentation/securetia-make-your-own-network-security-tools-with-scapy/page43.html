@@ -77,30 +77,29 @@ footer {
 	
 		<article>
             <h1>Análisis con Scapy + NFQUEUE</h1>
-<pre><code>:::py3
-import fnfqueue
-from scapy.all import *
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">fnfqueue</span>
+<span class="kn">from</span> <span class="nn">scapy.all</span> <span class="k">import</span> <span class="o">*</span>
 
-queue = 0
+<span class="n">queue</span> <span class="o">=</span> <span class="mi">0</span>
 
-conn = fnfqueue.Connection()
+<span class="n">conn</span> <span class="o">=</span> <span class="n">fnfqueue</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>
 
-try:
-    q = conn.bind(queue)
-    q.set_mode(0xffff, fnfqueue.COPY_PACKET)
-except PermissionError:
-    print("Access denied; Do I have root rights or the needed capabilities?")
-    sys.exit(-1)
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="mh">0xffff</span><span class="p">,</span> <span class="n">fnfqueue</span><span class="o">.</span><span class="n">COPY_PACKET</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Access denied; Do I have root rights or the needed capabilities?&quot;</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
-while True:
-    for packet in conn:
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">packet</span> <span class="ow">in</span> <span class="n">conn</span><span class="p">:</span>
 
-        pkt = IP(packet.payload)
-        pkt[TCP].show2()
-        packet.accept()
+        <span class="n">pkt</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">packet</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span>
+        <span class="n">pkt</span><span class="p">[</span><span class="n">TCP</span><span class="p">]</span><span class="o">.</span><span class="n">show2</span><span class="p">()</span>
+        <span class="n">packet</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
 
-conn.close()
-</code></pre>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
 		</article>
 
 	</section>

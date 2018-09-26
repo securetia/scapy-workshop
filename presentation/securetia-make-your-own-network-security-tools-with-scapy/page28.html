@@ -77,29 +77,28 @@ footer {
 	
 		<article>
             <h1>ARP Sniff (3)</h1>
-<pre><code>:::py3
-import sys
-import click
-from scapy.all import conf, sniff
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">click</span>
+<span class="kn">from</span> <span class="nn">scapy.all</span> <span class="k">import</span> <span class="n">conf</span><span class="p">,</span> <span class="n">sniff</span>
 
-def procpkt(pkt):
-    pkt.show2()
-    print('=' * 120)
+<span class="k">def</span> <span class="nf">procpkt</span><span class="p">(</span><span class="n">pkt</span><span class="p">):</span>
+    <span class="n">pkt</span><span class="o">.</span><span class="n">show2</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span> <span class="o">*</span> <span class="mi">120</span><span class="p">)</span>
 
-@click.command()
-@click.option('-i', 'iface', default=None, help='Interface to use')
-def cmd_arp_sniff(iface):
+<span class="nd">@click</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="s1">&#39;iface&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Interface to use&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">cmd_arp_sniff</span><span class="p">(</span><span class="n">iface</span><span class="p">):</span>
 
-    conf.verb = False
-    if iface:
-        conf.iface = iface
+    <span class="n">conf</span><span class="o">.</span><span class="n">verb</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">iface</span><span class="p">:</span>
+        <span class="n">conf</span><span class="o">.</span><span class="n">iface</span> <span class="o">=</span> <span class="n">iface</span>
 
-    print("Waiting for ARP packets...", file=sys.stderr)
-    sniff(filter="arp", store=False, prn=procpkt)
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Waiting for ARP packets...&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+    <span class="n">sniff</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="s2">&quot;arp&quot;</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">prn</span><span class="o">=</span><span class="n">procpkt</span><span class="p">)</span>
 
-if __name__ == '__main__':
-    cmd_arp_sniff()
-</code></pre>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">cmd_arp_sniff</span><span class="p">()</span>
+</pre></div>
 		</article>
 
 	</section>
