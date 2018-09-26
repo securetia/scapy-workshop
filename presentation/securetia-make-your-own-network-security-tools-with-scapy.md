@@ -585,11 +585,26 @@ Ejemplos:
     packet.payload = bytes(pkt)
     packet.mangle()
 
+# Si todo salió bien...
+
+![alt text](hacked.png)
 
 # Preguntas?
 
 ![alt text](hacker-questions.jpg)
 
-# Contactanos
+# Muchas Gracias!
 
-![alt text](contacto.png)
+<br>
+<span style="font-weight: bold; color: #aa281f">Fabian Martinez Portantier</span><br>
+<span style="font-weight: bold; color: #aa281f">Javier J. Vallejos Martínez</span><br>
+
+--
+
+<span>info@securetia.com</span><br><br>
+<span>https://www.securetia.com</span><br>
+<span>https://github.com/securetia/</span><br>
+<span>https://instagram.com/securetia/</span><br>
+<span>https://twitter.com/securetia</span><br>
+
+
